@@ -109,10 +109,10 @@ if __name__ == "__main__":
     pool = Pool(processes= cpu_count())
 
     with pool as p:
-        report_links = get_links(main_link)
+        report_links = p.map(get_links(),main_link)
 
     pool = Pool(processes= cpu_count())
-    
+
     # context manager so no need to close
     with pool as p:
         results = p.map(get_articles, [link for link in report_links])
