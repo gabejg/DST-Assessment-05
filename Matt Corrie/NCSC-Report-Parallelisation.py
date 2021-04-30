@@ -64,7 +64,7 @@ def get_articles(link):
 
     return data
 
-def get_links(main_link):
+def get_links():
 
         # setting options
         chrome_options = Options()
@@ -74,7 +74,7 @@ def get_links(main_link):
 
         # getting links to be looped over
         linkbrowser = webdriver.Chrome(executable_path='chromedriver.exe',chrome_options = chrome_options)
-        linkbrowser.get(main_link)
+        linkbrowser.get('https://www.ncsc.gov.uk/section/keep-up-to-date/threat-reports?q=&defaultTypes=report&sort=date%2Bdesc&writtenFor=Large+organisations&rows=232')
 
         links=[]
 
@@ -102,14 +102,12 @@ if __name__ == "__main__":
     print("Number of cores available equals %s" % cpu_count())
     print("Using %s cores" % 16)
 
-    main_link = 'https://www.ncsc.gov.uk/section/keep-up-to-date/threat-reports?q=&defaultTypes=report&sort=date%2Bdesc&writtenFor=Large+organisations&rows=232'
-
     # create a pool of workers
     # start all worker processes
     pool = Pool(processes= cpu_count())
 
     with pool as p:
-        report_links = p.map(get_links,main_link)
+        report_links = p.map(get_links)
 
     pool = Pool(processes= cpu_count())
 
