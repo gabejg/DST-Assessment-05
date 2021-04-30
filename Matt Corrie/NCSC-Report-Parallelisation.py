@@ -109,7 +109,7 @@ if __name__ == "__main__":
     pool = Pool(processes= cpu_count())
 
     with pool as p:
-        report_links = p.map(get_links(),main_link)
+        report_links = p.map(get_links,main_link)
 
     pool = Pool(processes= cpu_count())
 
