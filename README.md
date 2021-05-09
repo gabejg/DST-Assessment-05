@@ -7,7 +7,7 @@
 * Matt Corrie
 * Luke Hawley
 
-Our project is an equal equity split amongst each project member.
+Our project is equity split of 30/35/35/0 relative to the list above.
 
 ## Reading Order
 
