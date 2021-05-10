@@ -5,9 +5,8 @@
 * Gabriel Grant
 * Alex Caian
 * Matt Corrie
-* Luke Hawley
 
-Our project is equity split of 30/35/35/0 relative to the list above.
+Our project is equity split of 30/35/35 relative to the list above.
 
 ## Reading Order
 
@@ -31,5 +30,3 @@ You can see our individual work in each of our individual directories in the rep
 [Alex Caian](https://github.com/Galeforse/DST-Assessment-04/tree/main/Alex%20Caian)
 
 [Matt Corrie](https://github.com/Galeforse/DST-Assessment-04/tree/main/Matt%20Corrie)
-
-[Luke Hawley](https://github.com/Galeforse/DST-Assessment-04/tree/main/Luke%20Hawley)
