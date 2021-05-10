@@ -7,16 +7,15 @@
 * Matt Corrie
 * Luke Hawley
 
-Our project is equity split of 30/35/35/0 relative to the list above.
+Our project is equity split of 26/37/37/0 relative to the list above.
 
 ## Reading Order
 
 All Report content is found in the /Report directory and takes the following structure:
 * 00 - Introduction
 * 01 - Word Scraping
-* 02 - PySpark implementation
-* 04 - Aside into other methods
-* 04 - Performance Analysis
+* 02 - Using PySpark for parallelisation
+* 04 - Other methods and analysis
 * 05 - Conclusion
 
 ## Data
