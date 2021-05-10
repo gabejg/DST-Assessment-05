@@ -1,0 +1,73 @@
+    ### All the Imported Libraries used within the paper
+
+import findspark
+import datetime
+import pickle
+from urllib.request import urlopen
+import os
+import pandas as pd
+import numpy as np
+import gensim
+import pickle
+import matplotlib.pyplot as plt
+import heapq
+import nltk
+from math import log
+from nltk.corpus import stopwords
+from nltk.corpus import words
+import pyLDAvis.gensim
+from gensim.models.coherencemodel import CoherenceModel
+import sparknlp
+from sparknlp.base import Finisher, DocumentAssembler
+from sparknlp.annotator import (Tokenizer, Normalizer,
+                                Lemmatizer, LemmatizerModel, StopWordsCleaner)
+from pyspark.ml import Pipeline
+from pyspark.sql.functions import explode, col
+
+
+    ### All the Downloads necessary for running the code
+    
+# nltk.download('stopwords')
+# nltk.download('words')
+# conda create -n sparknlp python=3.7 -y
+# conda activate sparknlp
+# !pip install spark-nlp==3.0.2 pyspark==3.1.1
+# conda install -c cyclus java-jdk 
+
+
+    ### All the Functions defined within the paper
+    
+   ## This FUN defines standard 'nltk' lemmatization
+def lemmatize_text(text):
+    return [lemmatizer.lemmatize(w) for w in w_tokenizer.tokenize(text)]
+    
+   ## This FUN defines Coherence scoring for TF-IDF
+def getCoherence(m,t,d):
+    coherence_model_lda = CoherenceModel(model=m,texts=t, dictionary=d, coherence='c_v')
+    coherence_lda = coherence_model_lda.get_coherence()
+    return(coherence_lda) # Need high coherence
+    
+   ## This FUN defines the TF
+def term_frequency(BoW_dict):
+    tot_words = sum(BoW_dict.values())
+    freq_dict = {word: BoW_dict[word]/tot_words for word in BoW_dict.keys()}
+    return freq_dict
+    
+   ## This FUN defines the IDF
+def inverse_document_frequency(list_of_dicts):
+    tot_docs = len(list_of_dicts)
+    words = set([w for w_dict in list_of_dicts for w in w_dict.keys()])
+    idf_dict = {word: log(float(tot_docs)/(1.0 + sum([1 for w_dict in list_of_dicts if word in w_dict.keys()]))) for word in words}
+    return idf_dict
+    
+   ## This FUN defines the TF-IDF using the previous two above
+def tf_idf(list_of_dicts):
+    words = set([w for w_dict in list_of_dicts for w in w_dict.keys()]) 
+    tf_idf_dicts = []
+    idfs = inverse_document_frequency(list_of_dicts)
+    for i, w_dict in enumerate(list_of_dicts):
+        w_dict.update({word: 0 for word in words if word not in w_dict.keys()})
+        tf = term_frequency(w_dict)
+        tf_idf_dicts.append({word: tf[word]*idfs[word] for word in words})
+    return tf_idf_dicts
+ 
