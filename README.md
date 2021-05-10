@@ -14,7 +14,7 @@ Our project is equity split of 28/36/36/0 relative to the list above.
 All Report content is found in the /Report directory and takes the following structure:
 * 01 - Introduction
 * 02 - Word Scraping
-* 03 - Using PySpark for parallelisation
+* 03 - PySpark Implementation
 * 04 - Other methods and analysis
 * 05 - Conclusion
 
