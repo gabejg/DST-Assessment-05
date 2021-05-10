@@ -7,7 +7,7 @@
 * Matt Corrie
 * Luke Hawley
 
-Our project is equity split of 28/36/36/0 relative to the list above.
+Our project is equity split of 30/35/35/0 relative to the list above.
 
 ## Reading Order
 
